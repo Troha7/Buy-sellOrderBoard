@@ -9,15 +9,15 @@ import java.util.List;
 
 public class LiveOrderBoard {
 
-  private static final List<Order> orderList = new ArrayList<>();
+  private final List<Order> orderList = new ArrayList<>();
 
-  public static void add(Order order) {
+  public void add(Order order) {
     sumQuantity(order);
     orderList.add(order);
     Collections.sort(orderList);
   }
 
-  private static void sumQuantity(Order order) {
+  private void sumQuantity(Order order) {
     for (Order orderInList : orderList) {
       if (orderInList.compareTo(order) == 0) {
         Double sum = order.getQuantity() + orderInList.getQuantity();
@@ -28,11 +28,11 @@ public class LiveOrderBoard {
     }
   }
 
-  public static void remove(Order order) {
+  public void remove(Order order) {
     orderList.remove(order);
   }
 
-  public static void getSumInfo() {
+  public void getSumInfo() {
     StringBuilder buyStr = new StringBuilder("Buying >>>>>>>>>>>>>>\n");
     StringBuilder sellStr = new StringBuilder("Selling >>>>>>>>>>>>>>\n");
 
